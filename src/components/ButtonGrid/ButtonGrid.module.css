@@ -1,0 +1,65 @@
+.buttonGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.buttonCell {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyCell {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .buttonGrid {
+    gap: 6px;
+  }
+
+  .row {
+    gap: 6px;
+  }
+
+  .buttonCell {
+    aspect-ratio: 1;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .buttonGrid {
+    gap: var(--spacing-sm);
+  }
+
+  .row {
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (min-width: 769px) {
+  .buttonGrid {
+    gap: var(--spacing-md);
+  }
+
+  .row {
+    gap: var(--spacing-md);
+  }
+
+  .buttonCell {
+    aspect-ratio: 1.2;
+  }
+}

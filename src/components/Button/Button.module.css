@@ -1,0 +1,232 @@
+.button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--button-size-md);
+  height: var(--button-size-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.button:hover:not(:disabled) {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-fast);
+  display: block;
+  min-width: 24px;
+  text-align: center;
+}
+
+.button:active .label {
+  transform: scale(0.95);
+}
+
+/* Number button style */
+.number {
+  background: white;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.number:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.number:active:not(:disabled) {
+  background: var(--color-active);
+}
+
+/* Operator button style */
+.operator {
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+}
+
+.operator:hover:not(:disabled) {
+  background: var(--color-accent-light);
+}
+
+.operator:active:not(:disabled) {
+  background: var(--color-accent);
+}
+
+/* Function button style */
+.function {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.function:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.function:active:not(:disabled) {
+  background: var(--color-active);
+}
+
+/* Constant button style */
+.constant {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+
+.constant:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.constant:active:not(:disabled) {
+  background: var(--color-active);
+}
+
+/* Special button style (C, backspace, parentheses) */
+.special {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.special:hover:not(:disabled) {
+  background: var(--color-hover);
+}
+
+.special:active:not(:disabled) {
+  background: var(--color-active);
+}
+
+/* Mode toggle button */
+.mode {
+  background: white;
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.mode:hover:not(:disabled) {
+  background: var(--color-accent);
+  color: white;
+}
+
+.mode:active:not(:disabled) {
+  background: var(--color-accent-light);
+}
+
+/* Equals button style */
+.equals {
+  background: var(--color-text);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.equals:hover:not(:disabled) {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+}
+
+.equals:active:not(:disabled) {
+  background: var(--color-text);
+  color: white;
+}
+
+/* Empty button (no interaction) */
+.empty {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .button {
+    min-width: var(--button-size-sm);
+    height: var(--button-size-sm);
+    font-size: 0.85rem;
+  }
+
+  .label {
+    min-width: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .button {
+    min-width: var(--button-size-md);
+    height: var(--button-size-md);
+  }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .ripple {
+    animation: none;
+  }
+
+  .button:active .label {
+    transform: none;
+  }
+}
